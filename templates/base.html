@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vaga Livre</title>
+    {% load staticfiles %}
+    <!--<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'core_app/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'core:index' %}">Vaga Livre</a>
+        </div>
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+               <ul class="nav navbar-nav">
+            {% if is_auth %}
+                <li><a href="{% url 'core:index' %}">
+                    <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>&nbsp;Comprar créditos</a>
+                </li>
+            {% endif %}
+                <li><a href="{% url 'core:index' %}">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Acessibilidade</a>
+                </li>
+                <li><a href="{% url 'core:index' %}">
+                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Denúcia</a>
+                </li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if not is_auth %}
+                 <li class="{% block login_ativo %}{% endblock %}"><a href="{% url 'core:login' %}">
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Login</a></li>
+                <li class="{% block registro_ativo %}{% endblock %}"><a href="{% url 'core:cadastrarusuario' %}">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Cadastrar</a></li>
+                {% endif %}
+                {% if is_auth %}
+                <li><a href="{% url 'core:index' %}">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Configurações</a>
+                </li>
+                 <li>
+                    <a href="{% url 'core:logout' %}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
