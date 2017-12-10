@@ -31,18 +31,20 @@ def index(request):
         context = {'is_auth': True}
     else:
         context = {'is_auth': False}
-    MY_URL = 'https://vaga-livre.herokuapp.com/vagas/30130183'
+    MY_URL = 'https://vaga-livre.herokuapp.com/vagas2/30130183'
     r = requests.get(MY_URL)
     face = r.json()
     posicoes = face["result"]
-    context['vagas'] = posicoes
+    context['vagas'] = posicoes[:7]
+    context['vagas1'] = posicoes[7:30]
+    context['vagas2'] = posicoes[30:]
     return render(request, 'index.html', context)
 
 
 
 @csrf_exempt
 def search(request):
-    MY_URL = 'https://vaga-livre.herokuapp.com/vagas/30130183'
+    MY_URL = 'https://vaga-livre.herokuapp.com/vagas2/30130183'
     r = requests.get(MY_URL)
     face = r.json()
     posicoes = face["result"]

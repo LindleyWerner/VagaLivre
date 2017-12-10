@@ -2,6 +2,11 @@
 
 
 {% block body %}
+{% if is_auth %}
+<div class="col-md-12 col-xs-12">
+    <h5 align="right"><strong>Tempo restante:</strong> 34min &nbsp; <strong>Saldo: </strong>R$54,00</h5>
+</div>.
+{% endif %}
 <div id="mapa"  style=" margin: 0 auto; width: 95%; height: 500px; ">
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -115,7 +120,21 @@
       	{% for vaga in vagas %}
           markers.push(new google.maps.Marker({
     		    position: new google.maps.LatLng({{vaga.X}}, {{vaga.Y}}),
-    		    icon: '{% static 'images/ping.png' %}',
+    		    icon: '{% static 'images/pin5.png' %}',
+    		    map: map}
+          ));
+      	{% endfor %}
+      	{% for vaga in vagas1 %}
+          markers.push(new google.maps.Marker({
+    		    position: new google.maps.LatLng({{vaga.X}}, {{vaga.Y}}),
+    		    icon: '{% static 'images/piny.png' %}',
+    		    map: map}
+          ));
+      	{% endfor %}
+      	{% for vaga in vagas2 %}
+          markers.push(new google.maps.Marker({
+    		    position: new google.maps.LatLng({{vaga.X}}, {{vaga.Y}}),
+    		    icon: '{% static 'images/pinr.png' %}',
     		    map: map}
           ));
       	{% endfor %}
