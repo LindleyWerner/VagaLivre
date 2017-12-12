@@ -13,6 +13,6 @@ também o cálculo da maneira mais barata de deslocamento entre a origem e desti
 - Lindley Werner -> lindleywerner@gmail.com
 - Lucas Alves -> lucasacparreiras@gmail.com
 - Luiz Peixoto -> peixotooluiz@gmail.com
-- Nilo -> nsr1984@hotmail.com
+- Nilo Estanislau -> nsr1984@hotmail.com
 
 Se gostou da ideia e quer colocá-la em prática em sua cidade, **contate-nos**
